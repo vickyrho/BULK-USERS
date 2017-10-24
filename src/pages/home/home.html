@@ -1,14 +1,38 @@
-<ion-header>
-  <ion-navbar>
-    <ion-title>
-      Ionic Blank
+<ion-header xmlns="http://www.w3.org/1999/html">
+  <ion-navbar color="secondary">
+    <ion-title >
+      LOGIN
     </ion-title>
   </ion-navbar>
 </ion-header>
 
 <ion-content padding>
-  The world is your oyster.
-  <p>
-    If you get lost, the <a href="http://ionicframework.com/docs/v2">docs</a> will be your guide.
-  </p>
+
+
+
+
+    <div *ngIf="isAdd">
+
+      <ion-input type="text" placeholder="email" [(ngModel)]="email" ></ion-input>
+      <ion-input type="text" placeholder="event Name" [(ngModel)]="eventId"></ion-input>
+      <ion-fab right>
+      <ion-icon name="checkmark"  (click)="pushUser()"></ion-icon>
+      </ion-fab>
+    </div>
+
+  <ion-fab right bottom>
+    <ion-icon style="color: #488aff ; font-size: 70px " (click)="addUser()" name="add-circle"></ion-icon>
+  </ion-fab>
+
+  <ion-fab center bottom>
+    <button ion-button (click)="addToDataBase()" color="primary">ADD USERS</button>
+  </ion-fab>
+
+  <ion-card>
+    <ion-list *ngFor="let data of dataSet">
+      {{data.email}}<br>
+      {{data.eventId}}
+    </ion-list>
+  </ion-card>
+
 </ion-content>
